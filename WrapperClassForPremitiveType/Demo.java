@@ -1,4 +1,4 @@
-package WrapperClassForPremitiveType;
+package wrapperClassForPremitiveType;
 
 public class Demo {
 

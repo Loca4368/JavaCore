@@ -1,5 +1,7 @@
 package javaIO;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,6 +13,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Calendar;
+import java.util.function.Consumer;
 
 public class DemoJavaIO {
 	
@@ -75,6 +82,72 @@ public class DemoJavaIO {
  		
  		
  		System.out.println("Write files Sucessfully!");
-	}
+ 		
+ 		//Demo3: Use Buffer to read and write file
+ 	
+ 		File sourceFile4 = new File(filePath + File.separator + "source4.txt");
+ 		File targetFile4 = new File(filePath + File.separator + "target5.txt");
+ 		
+ 		Reader rd2 = new FileReader(sourceFile4);
+ 		Writer wt2 = new FileWriter(targetFile4);
+ 		
+ 		BufferedReader bfr = new BufferedReader(rd2);
+ 		BufferedWriter bwt = new BufferedWriter(wt2);
+ 		
+ 		//Write content line by line
+ 		String line = null;
+ 		while((line = bfr.readLine())!=null)
+ 		{
+ 			bwt.write(line);
+ 			bwt.newLine();
+ 			bwt.flush();
+ 		}
+ 		
+ 		//Write content char by char
+// 		int ch = 0;
+// 		while((ch = bfr.read())!= -1)
+// 		{
+// 			bwt.write(ch);
+// 		}
+// 		
+ 		bfr.close();		
+ 		bwt.close();
+ 	 
 
+ 		
+ 		//Demo4: Call recursive function(walkFile)  to List all files
+ 		File sourceFile2 = new File(filePath + "/Files");
+ 		
+ 		walkFile(sourceFile2);
+ 		
+ 		
+	}
+	
+	//Method to walk directory and print out files
+	public static void walkFile(File file)
+	{
+		//For file modified time
+		Calendar cl = Calendar.getInstance();
+		
+		StringBuilder sb = new StringBuilder();
+		if(file.isDirectory())
+		{
+			System.out.println("Current Direcotry: " + file.getPath());
+			for(File temp: file.listFiles())
+			{
+				walkFile(temp);
+			}
+		}
+		else
+		{
+			sb.append("Name:"+file.getName());
+			sb.append(" ");
+			sb.append("Size:"+file.length());
+			sb.append(" ");
+			cl.setTimeInMillis(file.lastModified());
+			sb.append("Last Modified:" +cl.getTime().toString());
+			System.out.println(sb.toString());
+		}			
+		
+	}
 }

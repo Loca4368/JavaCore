@@ -1,4 +1,4 @@
-package DataConversion;
+package dataConversion;
 
 public class StringAndInteger {
 
