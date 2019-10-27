@@ -1,6 +1,6 @@
 //Deposit Thread for account
 
-package com.concurrence;
+package com.concurrency;
 
 public class WithdrawThread implements Runnable {
 

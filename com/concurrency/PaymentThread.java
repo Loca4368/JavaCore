@@ -1,4 +1,4 @@
-package com.concurrence;
+package com.concurrency;
 
 public class PaymentThread implements Runnable {
 

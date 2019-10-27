@@ -1,6 +1,6 @@
 //Deposit thread for account
 
-package com.concurrence;
+package com.concurrency;
 
 public class DepositThread implements Runnable {
 
