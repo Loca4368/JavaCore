@@ -12,7 +12,6 @@ public class Account {
 	private double balance = 0;
 
 	// Method 1: Synchronized the method
-	// Deposit
 	public synchronized void deposit(double amount) {
 
 		double newBalance = balance + amount;
@@ -40,7 +39,6 @@ public class Account {
 	}
 
 	// Method 3: Use Lock
-	// Payment
 	public void pay(double payAmount) {
 
 		accountLock.lock();
