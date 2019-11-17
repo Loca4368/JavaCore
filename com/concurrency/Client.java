@@ -17,27 +17,26 @@ public class Client {
 
 		Account currentAccount = new Account();
 
-		// Create a fixed Thread pool with thread number 50
-		ExecutorService service = Executors.newFixedThreadPool(10);
+		// Create a fixed Thread pool with thread number 100
+		ExecutorService service = Executors.newFixedThreadPool(100);
 
 		System.out.println("Processing.........");
 		for (int i = 1; i <= 10; i++) {
-			// Method 1
-			// The deposit method is modified by synchronized
 
+			// Method 1: The deposit method is modified by synchronized
 			service.execute(new DepositThread(currentAccount, 100));
 		}
 
 		for (int i = 1; i <= 10; i++) {
-			// Method 2
-			// The account object is synchronized in the Withdraw thread
+
+			// Method 2: The account object is synchronized in the Withdraw thread
 			service.execute(new WithdrawThread(currentAccount, 50));
 		}
 
 		for (int i = 1; i <= 10; i++) {
-			// Method 3
-			// Use Lock in the pay method
-			service.execute(new WithdrawThread(currentAccount, 50));
+
+			// Method 3: Use Lock in the pay method
+			service.execute(new WithdrawThread(currentAccount, 20));
 		}
 
 		service.shutdown();

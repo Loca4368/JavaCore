@@ -18,7 +18,7 @@ public class Account {
 		double newBalance = balance + amount;
 
 		try {
-			Thread.sleep(2000);// Simulate processing time for 2 seconds
+			Thread.sleep(200);// Simulate processing time for 2 seconds
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -31,7 +31,7 @@ public class Account {
 
 		double newBalance = balance - amount;
 		try {
-			Thread.sleep(2000);// Simulate processing time for 2 seconds
+			Thread.sleep(200);// Simulate processing time for 2 seconds
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -42,29 +42,12 @@ public class Account {
 	// Method 3: Use Lock
 	// Payment
 	public void pay(double payAmount) {
-		accountLock.lock();
 
-//		try{
-//			double newBalance = balance - payAmount;
-//			try
-//			{
-//				Thread.sleep(2000); //Simulate processing time for 2 seconds
-//			}
-//			catch(InterruptedException e)
-//			{
-//				e.printStackTrace();
-//			}
-//			
-//			balance = newBalance;
-//			}
-//		finally
-//		{
-//			accountLock.unlock();
-//		}
+		accountLock.lock();
 
 		double newBalance = balance - payAmount;
 		try {
-			Thread.sleep(2000); // Simulate processing time for 2 seconds
+			Thread.sleep(200); // Simulate processing time for 2 seconds
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

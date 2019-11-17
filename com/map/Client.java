@@ -28,6 +28,8 @@ public class Client {
 			System.out.println(valueString);
 		}
 
+		System.out.println("\n");
+
 		// Linked Hash Map - maintain insertion order
 		Map<String, String> myLinkedHashMap = new LinkedHashMap<String, String>();
 
@@ -40,6 +42,8 @@ public class Client {
 			System.out.println(entry.getKey());
 			System.out.println(entry.getValue());
 		}
+
+		System.out.println("\n");
 
 		// TreeMap - display in order, e.g. alphabetic for String and numeric for
 		// Integer
@@ -57,6 +61,9 @@ public class Client {
 			System.out.println(entry.getKey() + ":" + entry.getValue());
 		}
 
+		System.out.println("\n");
+		
+		// Display in order based on salary
 		Map<Employee, Integer> employeeMap = new TreeMap<Employee, Integer>();
 		employeeMap.put(new Employee("Jason", 30, 3000), 1);
 		employeeMap.put(new Employee("John", 31, 2000), 2);
@@ -66,7 +73,7 @@ public class Client {
 
 		while (employeeIterator.hasNext()) {
 			Map.Entry<Employee, Integer> employeeEntry = employeeIterator.next();
-			System.out.println(employeeEntry.getKey().getName() + " " + employeeEntry.getValue());
+			System.out.println("ID: " + employeeEntry.getValue() + " " + employeeEntry.getKey().toString());
 
 		}
 
